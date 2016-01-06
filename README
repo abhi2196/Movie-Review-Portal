@@ -1,0 +1,23 @@
+
+**************************************************************************************************
+1.The front end of project is developed using Python GUI library tkinter,RUN the gui.py script file.
+2.On the GUI various queries related to upcoming and now_playing movies can be solved.
+3.To run the script open folder /codes/c.py to extract data from API .
+4.To run the mapper and reducer on hadoop to reduce the data according to use from dataset open
+  folder /codes.
+**************************************************************************************************
+Different commands are used to run mapper and reducer
+	a.to put data on hdfs
+		hadoop fs -put data3.txt /hduser/abhishek 
+		hadoop fs -put data4.txt /hduser/abhishek
+
+	b.hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar -file <mapper-file> -mapper <mapper-file> -file <red-file> -reducer <red-file> -input <hadoop-input-path> -output <hadoop-output-path>
+ex-
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar -file smap.py -mapper smap.py -file sred.py -reducer sred.py -input /hduser/abhishek/data3.txt -output /hduser/abhishek/output/out
+
+	c.to view output 
+		hadoop fs -cat  /hduser/abhishek/output/out/part-00000
+	d.to rm data or dir from hdfs
+		hadoop fs -rm -R /hduser/abhishek/output/out
+
+**************************************************************************************************
